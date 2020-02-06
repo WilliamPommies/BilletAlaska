@@ -7,7 +7,7 @@ class Database
     $fileContent = file_get_contents($filename);
     $dbConfig = json_decode($fileContent);
     $this->host = $dbConfig->host;
-    $this->username = $dbConfig->username;
+    $this->user = $dbConfig->user;
     $this->password = $dbConfig->password;
     $this->dbname = $dbConfig->dbname;
   }
@@ -17,9 +17,9 @@ class Database
     return $this->host;
   }
 
-  public function getUsername()
+  public function getUser()
   {
-    return $this->username;
+    return $this->user;
   }
 
   public function getPassword()

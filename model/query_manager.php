@@ -1,21 +1,25 @@
 <?php
 require_once('model/database.php');
 
-class QueryManager
+abstract class QueryManager
 {
+  protected static $connection = NULL;
+
   public function __construct()
   {
-    $filename = "config/dbconfig.json";
+    $filename = "./config/db.json";
     $database = new Database($filename);
-    $this->username = $database->getUsername();
+    $this->user = $database->getUser();
     $this->host = $database->getHost();
     $this->password = $database->getPassword();
     $this->dbname = $database->getDbname();
+    if (self::$connection == NULL){
+      self::$connection = new PDO('mysql:host='.$this->host.';dbname='.$this->dbname.';charset=utf8', ''.$this->user.'', ''.$this->password.'');
+    }
   }
 
-  public function dbConnect()
+  public function getConnection()
   {
-    $db = new PDO('mysql:host='.$this->host.';dbname='.$this->dbname.';charset=utf8', $this->username, $this->password);
-    return $db;
+    return self::$connection;
   }
 }
