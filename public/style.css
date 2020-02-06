@@ -1,0 +1,19 @@
+
+#lastArticle{
+    margin: 2%;
+    border: 1px lightgray solid;
+    box-shadow: 0 3px 12px grey;;
+    padding : 30px;
+}
+#flex-container{
+    display: flex;
+    justify-content: space-between;
+}
+
+.chapters{
+    padding : 10px;
+    flex-direction: column;
+    width: 24%;
+    box-shadow: 0 3px 12px grey;;
+    border : 1px lightgray solid;
+}
