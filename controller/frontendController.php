@@ -15,4 +15,12 @@ class FrontendController
     require('./view/front/home.php');
   
   }
+
+  public function getArticle(){
+    $articleShow = new Articles();
+    
+    $displayArticle = $articleShow->getArticle($_GET['id']);
+
+    require('./view/front/displayArticle.php');
+  }
 }

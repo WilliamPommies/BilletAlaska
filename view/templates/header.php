@@ -9,7 +9,9 @@
 </head>
 <body>
     <nav class="navbar navbar-expand-lg navbar-dark bg-info"> 
-        <a href="#" class="navbar-brand">Billets d'Alaska</a>
+        <a href="/admin" class="navbar-brand">Billets d'Alaska</a>
+        <a href="/" class="navbar-brand"> Home</a>
+        
     </nav>
 
     <div class="container mt-4">

@@ -20,10 +20,10 @@
         <div class="chapters">
             <h3><?php echo $articleTitle ?></h3>
             <p><?php echo substr(strip_tags($articleContent),0,200)?> ... </p>
-            <button class="btn-primary"><a>lire la suite</a></button>
+            <a href="<?php echo "/chapitre?id=" . $articleId ?>"><button class="btn-primary">lire la suite</button></a>
         </div>
       
     <?php } ?>
     </div>
-</div>
+</div> 
 <?php require('./view/templates/footer.php'); ?>
