@@ -17,3 +17,24 @@
     box-shadow: 0 3px 12px grey;;
     border : 1px lightgray solid;
 }
+
+#comment_section{
+    width : auto;
+    margin : 2% 25% 2% 25%;
+
+}
+ .comment{
+    padding: 10px;
+    border : 1px red solid;
+    border-radius : 4px;
+    margin : 10px 0;
+ }
+
+footer{
+    height: 100px;
+}
+
+footer p {
+    margin-top: 50px;
+    text-align: center;
+}

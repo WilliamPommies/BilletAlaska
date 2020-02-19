@@ -4,7 +4,7 @@
     <h1>Dernier Article</h1>
     <h3><?php echo $lastArticle['title']; ?></h3>
     <p><?php echo substr(strip_tags($lastArticle['content']),0,400)?>...</p>
-    <button class='btn-primary'><a>Lire plus</a></button>
+    <a href="<?php echo "/chapitre?id=" . $lastArticleId ?>"><button class='btn-primary'>Lire plus</button></a>
 </div>
 <br>
 <div id='allArticles'>
