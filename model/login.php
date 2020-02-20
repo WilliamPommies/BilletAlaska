@@ -1,6 +1,6 @@
 <?php
 
-require("model/query_manager.php");
+require_once("model/query_manager.php");
 
 class Users extends QueryManager
 {

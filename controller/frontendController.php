@@ -14,7 +14,7 @@ class FrontendController
     $lastArticleId = $lastArticle['id'];
     
 
-    require('./view/front/home.php');
+    require_once('./view/front/home.php');
   
   }
 
@@ -27,13 +27,14 @@ class FrontendController
 
     $comments = $commentManager->getComments($_GET['id']);
 
-    require('./view/front/displayArticle.php');
+    require_once('./view/front/displayArticle.php');
   }
 
-  public function addComment($username, $commentaire, $id_article)
+  public function addComment($username, $comment, $id_article)
   {
     $commentManager = new Comments();
-    $commentManager->addComment($username, $commentaire, $id_article);
+    $commentManager->addComment($username, $comment, $id_article);
   }
+
 
 }

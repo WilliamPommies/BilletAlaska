@@ -1,4 +1,4 @@
-<?php require('./view/templates/header.php');
+<?php require_once('./view/templates/header.php');
 
      $articleId = $displayArticle[0];
      $articleTitle = $displayArticle[1];
@@ -11,14 +11,15 @@
     </div>
 
     <form action="index.php?action=addComment&amp;id=<?= $articleId ?>" method="post">
-         <label for="pseudo">Pseudo :</label>
+         <label for="username">Pseudo :</label>
          <input type="text" name="username" value="" required>
          <br>
          <label for="comment">Commentaire :</label>
-         <textarea name="commentaire" rows="3" cols="20" required></textarea>
+         <textarea name="comment" rows="3" cols="20" required></textarea>
          <br>
          <input type="submit" name="valider" value="Ajouter le commentaire">
     </form>
+
     
     <div id="comment_section">
         <?php
@@ -39,4 +40,4 @@
         ?>
     </div>
 </div>
-<?php require('./view/templates/footer.php'); ?>
+<?php require_once('./view/templates/footer.php'); ?>

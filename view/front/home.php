@@ -1,5 +1,5 @@
 
-<?php require('./view/templates/header.php'); ?>
+<?php require_once('./view/templates/header.php'); ?>
 <div id='lastArticle'>
     <h1>Dernier Article</h1>
     <h3><?php echo $lastArticle['title']; ?></h3>
@@ -26,4 +26,4 @@
     <?php } ?>
     </div>
 </div> 
-<?php require('./view/templates/footer.php'); ?>
+<?php require_once('./view/templates/footer.php'); ?>

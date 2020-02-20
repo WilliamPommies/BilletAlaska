@@ -12,11 +12,11 @@ class Comments extends QueryManager
       return $req;
     }
 
-    public function addComment($username, $commentaire, $id_article)
+    public function addComment($username, $comment, $id_article)
     {
       $db = $this->getConnection();
-      $req = $db->prepare("INSERT INTO comments(username, commentaire, id_article) VALUES(?,?,?");
-      $req->execute(array($username, $commentaire, $id_article));
+      $req = $db->prepare("INSERT INTO commentaires (username, comment, id_article) VALUES(?,?,?)");
+      $req->execute(array($username, $comment, $id_article));
     }
 
 }
