@@ -19,4 +19,29 @@ class Comments extends QueryManager
       $req->execute(array($username, $comment, $id_article));
     }
 
+    public function signalComment($commentId){
+      $db = $this->getConnection();
+      $req = $db->prepare("UPDATE commentaires SET reported = '1' WHERE id = ? ");
+      $req->execute(array($commentId));
+    }
+
+    public function deleteComment($commentId){
+      $db = $this->getConnection();
+      $req = $db->prepare("DELETE FROM commentaires WHERE id = ?");
+      $req->execute(array($commentId));
+    }
+
+    public function getCommentsToModerate(){
+      $db = $this->getConnection();
+      $req = $db->prepare("SELECT * FROM commentaires WHERE reported = 1");
+      $req->execute();
+      return $req;
+    }
+
+    public function allowComment($commentId){
+      $db = $this->getConnection();
+      $req = $db->prepare("UPDATE commentaires SET reported = '0' WHERE id = ?");
+      $req->execute(array($commentId));
+    }
+
 }

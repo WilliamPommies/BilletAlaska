@@ -10,7 +10,8 @@
         <p><?php echo $articleContent;?> </p>
     </div>
 
-    <form action="index.php?action=addComment&amp;id=<?= $articleId ?>" method="post">
+    <form name="comment-form" action="/chapitre?id=<?= $articleId ?>" method="post">
+        <input type="hidden" name="form_checker" value="commentForm">
          <label for="username">Pseudo :</label>
          <input type="text" name="username" value="" required>
          <br>
@@ -25,19 +26,39 @@
         <?php
             while ($comment = $comments->fetch())
             {
-                $commentPseudo = htmlspecialchars($comment[1]);
-                $commentContent = htmlspecialchars($comment[2]);
-                $commentId = $comment[0];
-            ?>
-            <div class="comment">
-                <h4>Commentaire de <?= $commentPseudo ?></h4>
-                <p><?= $commentContent ?></p>
-                <a href="index.php?action=signalComment&amp;id=<?= $commentId ?>&amp;articleId=<?= $articleId ?>">Signaler</a>
-            </div>
-            <?php
+            $commentPseudo = htmlspecialchars($comment[1]);
+            $commentContent = htmlspecialchars($comment[2]);
+            $commentId = $comment[0];
+                if($comment[4] == 0){
+                ?>
+                <div class="comment">
+                    <h4>Commentaire de <?= $commentPseudo ?></h4>
+                    <p id="comment-content"><?= $commentContent ?></p>
+                    <button id="report-btn" onclick="reportComment(<?= $commentId ?>)">signaler</button>
+                </div>
+                <?php
+                } elseif($comment[4] == 1){
+                ?>
+                <div class="comment">
+                    <h4>Commentaire de <?= $commentPseudo ?></h4>
+                    <p>Ce commentaire est en attente de modération</p>
+                </div>
+                <?php
+                }
             }
             $comments->closeCursor()
         ?>
     </div>
 </div>
+<script type="text/javascript">
+    async function reportComment(commentId){
+        let response = await axios.get("/comments/report?id=" + commentId)
+        if(response.status >= 200 && response.status < 400){
+            let signaledComment = "Ce commentaire est désormais en attente de modération. Merci de votre retour."
+            document.getElementById('comment-content').innerText = signaledComment
+            document.getElementById('comment-content').style.color = 'red'
+            document.getElementById("report-btn").style.display = 'none'
+        }
+    } 
+</script>
 <?php require_once('./view/templates/footer.php'); ?>

@@ -24,17 +24,20 @@ class FrontendController
     $displayArticle = $articleShow->getArticle($_GET['id']);
 
     $commentManager = new Comments();
-
+    if(isset($_POST['form_checker']) && $_POST['form_checker'] == 'commentForm'){
+      $commentManager->addComment($_POST['username'], $_POST["comment"], $_GET['id']);
+      header("location: /chapitre?id=" . $_GET['id']);
+    }
     $comments = $commentManager->getComments($_GET['id']);
 
     require_once('./view/front/displayArticle.php');
   }
 
-  public function addComment($username, $comment, $id_article)
+  public function signalComment()
   {
     $commentManager = new Comments();
-    $commentManager->addComment($username, $comment, $id_article);
+    $commentManager->signalComment($_GET['id']);
+    
   }
-
 
 }

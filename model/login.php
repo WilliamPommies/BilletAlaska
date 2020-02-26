@@ -1,23 +1,20 @@
+  
 <?php
 
-require_once("model/query_manager.php");
+require_once("./model/query_manager.php");
 
-class Users extends QueryManager
+class Login extends QueryManager
 {
-  public function getUsers()
+  public function verifyLogin($userIds)
   {
+    $usernameLogin = $userIds['username'];
+    $passwordLogin = md5($userIds['password']);
     $db = $this->getConnection();
-    $req = $db->prepare('SELECT * FROM users ORDER BY id');
-    $req->execute();
-    return $req;
-  }
-
-  public function getUser($userId)
-  {
-    $db = $this->getConnection();
-    $req = $db->prepare("SELECT * FROM articles WHERE id =?");
-    $req->execute(array($userId));
-    $user = $req->fetch();
-    return $user;
+    $req = $db->prepare("SELECT * FROM users WHERE username =?");
+    $req->execute(array($usernameLogin));
+    $identifiant = $req->fetch();
+    if ($passwordLogin == $identifiant[2]) {
+      $_SESSION['statut'] = 'admin';
+    }
   }
 }

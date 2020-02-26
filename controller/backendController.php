@@ -1,24 +1,23 @@
 <?php
 require_once('./model/login.php');
+require_once('./model/chapter_manager.php');
+require_once('./model/comment_manager.php');
 
 class backendController
 {
-    public function connection(){
-
-        require_once('./view/back/adminlogin.php');
-    }
-
-    public function verification(){
-        $userLogin = new Users();
-        $user = $userLogin->getUsers("username");
-        $userpswd = $userLogin->getUsers("password");
-
-        require_once('./view/back/verify.php');
-    }
-
-    public function dashboard(){
-
-        require_once('./view/back/dashboard.php');
-
+    public function dashboard()
+    { 
+        if (isset($_SESSION['statut'])){
+            if ($_SESSION['statut'] == 'admin'){
+                $articleShow = new Articles;
+                $articles = $articleShow->getArticles();
+                $articleShow = new Comments;
+                $reportedComments = $articleShow->getCommentsToModerate();
+    
+                require('./view/back/dashboard.php');
+            } else {
+                require("./view/front/home.php");
+            }
+        }       
     }
 }
