@@ -9,20 +9,16 @@
         <br/>
         <p><?php echo $articleContent;?> </p>
     </div>
-
-    <form name="comment-form" action="/chapitre?id=<?= $articleId ?>" method="post">
-        <input type="hidden" name="form_checker" value="commentForm">
-         <label for="username">Pseudo :</label>
-         <input type="text" name="username" value="" required>
-         <br>
-         <label for="comment">Commentaire :</label>
-         <textarea name="comment" rows="3" cols="20" required></textarea>
-         <br>
-         <input type="submit" name="valider" value="Ajouter le commentaire">
-    </form>
-
     
     <div id="comment_section">
+        <form name="comment-form" action="/chapitre?id=<?= $articleId ?>" method="post"> 
+            <input type="hidden" name="form_checker" value="commentForm">
+            <input type="text" name="username" value="" placeholder="Pseudo" rows="1" cols="60" required>
+            <br>
+            <textarea name="comment" placeholder="Votre commentaire" rows="3" cols="66" required></textarea>
+            <br>
+            <input type="submit" name="valider" value="Ajouter le commentaire">
+        </form>
         <?php
             while ($comment = $comments->fetch())
             {
