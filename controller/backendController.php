@@ -40,20 +40,49 @@ class backendController
     public function deleteComment()
     {
         $commentShow = new Comments();
-        $allowComment = $commentShow->deleteComment($_GET['id']);
+        $deleteComment = $commentShow->deleteComment($_GET['id']);
     }
 
-    public function createArticle(){
+    public function createArticle()
+    {
         require_once('./view/back/newArticle.php');
     }
 
-    public function previewAndUpArticle(){
-
+    public function previewAndUpArticle()
+    {
         $articleShow = new Articles();
         if(isset($_POST['form_checker']) && $_POST['form_checker'] == 'newArticleForm'){
-            $articleShow->saveNewArticle($_POST['title'], $_POST["content"]);
+            $newArticle = $articleShow->saveNewArticle($_POST['title'], $_POST["content"]);
         }
         
         require_once('./view/back/preview.php');
+    }
+
+    public function deleteArticle()
+    {
+        $articleShow = new Articles();
+        $deleteArticle = $articleShow->deleteArticle($_GET['id']);
+        header('location: /');
+    }
+
+    public function modifyArticle(){
+        $articleShow = new Articles();
+        $displayArticle = $articleShow->getArticle($_GET['id']);
+
+        require_once("./view/back/updateArticle.php");
+    }
+
+    public function updateArticle()
+    {
+        
+        if(isset($_POST['form_checker']) && $_POST['form_checker'] == 'updateForm'){
+            $articleShow = new Articles();
+            $articleId = $_GET['id'];
+            $title = $_POST['title'];
+            $article = $_POST["content"];
+            $articleShow->updateArticle($title, $article, $articleId);
+            header('location: /chapitre?id='. $_GET['id']);
+            
+        }
     }
 }

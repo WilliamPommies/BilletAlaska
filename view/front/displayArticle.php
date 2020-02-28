@@ -5,9 +5,9 @@
      $articleContent = $displayArticle[2];
      ?>
     <div>
-        <h3><?php echo $articleTitle;?></h3>
+        <h3><?= $articleTitle;?></h3>
         <br/>
-        <p><?php echo $articleContent;?> </p>
+        <p><?= $articleContent;?> </p>
     </div>
     
     <div id="comment_section">
@@ -30,7 +30,7 @@
                 <div class="comment">
                     <h4>Commentaire de <?= $commentPseudo ?></h4>
                     <p id="comment-content"><?= $commentContent ?></p>
-                    <button id="report-btn" onclick="reportComment(<?= $commentId ?>)">signaler</button>
+                    <button id="report-btn" class="btn-outline-danger" onclick="reportComment(<?= $commentId ?>)">signaler</button>
                 </div>
                 <?php
                 } elseif($comment[4] == 1){
@@ -50,6 +50,7 @@
     async function reportComment(commentId){
         let response = await axios.get("/comments/report?id=" + commentId)
         if(response.status >= 200 && response.status < 400){
+            alert("Commentaire signalé")
             let signaledComment = "Ce commentaire est désormais en attente de modération. Merci de votre retour."
             document.getElementById('comment-content').innerText = signaledComment
             document.getElementById('comment-content').style.color = 'red'

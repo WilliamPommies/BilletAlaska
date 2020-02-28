@@ -38,17 +38,17 @@ class Articles extends QueryManager
     $req->execute(array($title,$article));
   }
 
-  public function saveModifyArticle($articleId,$title,$article)
+  public function updateArticle($title, $article, $articleId)
   {
     $db = $this->getConnection();
     $req = $db->prepare("UPDATE articles SET title =?, content = ? WHERE id=?");
-    $req->execute(array($title,$article,$articleId));
+    $req->execute(array($title, $article, $articleId));
   }
 
   public function deleteArticle($articleId)
   {
     $db = $this->getConnection();
-    $req = $db->prepare("DELETE FROM Article WHERE id =?");
+    $req = $db->prepare("DELETE FROM articles WHERE id =?");
     $req->execute(array($articleId));
   }
 }

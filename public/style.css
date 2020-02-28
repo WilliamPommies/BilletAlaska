@@ -68,7 +68,7 @@ footer p {
 }
 #commentToModerate{
     width : 90%;
-    margin : 50px auto;
+    margin : 0px auto 50px auto;
     padding : 50px;
     border : 1px grey solid;
     border-radius : 20px;
@@ -93,4 +93,34 @@ td, th{
 
 .btn{
     justify-content: center;;
+}
+
+.btn-container{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+}
+
+.title{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    margin-bottom : -20px;
+}
+
+.title h1{
+    font-size: 60px;
+    margin-bottom : -5px;
+    background-color: white;
+    border: 4px white solid;
+}
+
+.articleForm{
+    width : 90%;
+    margin : auto; 
+    padding : 20px;
+}
+
+.articleForm #mytextarea{
+    height : 100%;
 }

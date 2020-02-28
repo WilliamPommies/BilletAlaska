@@ -1,10 +1,10 @@
 
 <?php require_once('./view/templates/header.php'); ?>
 <div id='lastArticle'>
-    <h1>Dernier Article</h1>
-    <h3><?php echo $lastArticle['title']; ?></h3>
-    <p><?php echo substr(strip_tags($lastArticle['content']),0,400)?>...</p>
-    <a href="<?php echo "/chapitre?id=" . $lastArticleId ?>"><button class='btn-primary'>Lire plus</button></a>
+    <h1>Dernier Chapitre</h1>
+    <h3><?= $lastArticle['title']; ?></h3>
+    <p><?= substr(strip_tags($lastArticle['content']),0,400)?>...</p>
+    <a href="<?= "/chapitre?id=" . $lastArticleId ?>"><button class='btn-primary'>Lire plus</button></a>
 </div>
 <br>
 <div id='allArticles'>
@@ -18,9 +18,9 @@
      $articleContent = $article[2];
      ?>
         <div class="chapters">
-            <h3><?php echo $articleTitle ?></h3>
-            <p><?php echo substr(strip_tags($articleContent),0,200)?> ... </p>
-            <a href="<?php echo "/chapitre?id=" . $articleId ?>"><button class="btn-primary">lire la suite</button></a>
+            <h3><?= $articleTitle ?></h3>
+            <p><?= substr(strip_tags($articleContent),0,200)?> ... </p>
+            <a href="<?= "/chapitre?id=" . $articleId ?>"><button class="btn-primary">lire la suite</button></a>
         </div>
       
     <?php } ?>
