@@ -19,6 +19,14 @@
     <nav class="navbar navbar-expand-lg navbar-dark bg-info"> 
         <a href="/login" class="navbar-brand">Billets d'Alaska</a>
         <a href="/" class="navbar-brand"> Home</a>
+        <?php 
+            if($_SESSION["statut"] == "admin"){
+                ?>
+                    <a href="/disconnect" class="navbar-brand" onclick="disconnect()" >déconnecter</a>
+                <?php
+            }
+        ?>
+
         
     </nav>
 

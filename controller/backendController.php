@@ -1,5 +1,5 @@
 <?php
-require_once('./model/login.php');
+require_once('./model/login_manager.php');
 require_once('./model/chapter_manager.php');
 require_once('./model/comment_manager.php');
 
@@ -15,21 +15,31 @@ class backendController
     public function dashboard()
     { 
         if(isset($_POST['login_checker']) && $_POST['login_checker'] == 'loginForm'){
-            $login = new Login();
-            $getUser = $login->getUsers();
+            $username = $_POST['username'];
+            $password = $_POST['password'];
+            $getUsers = new Login();
+            $identifiant = $getUsers->connect($username);
+            if (md5($password) == md5($identifiant[2])) {
+                $_SESSION['statut'] = 'admin';
 
-            $articleShow = new Articles();
-            $articles = $articleShow->getArticles();
-
-            $commentShow = new Comments();
-            $modComments = $commentShow->getCommentsToModerate();
-            
-
-            require_once('./view/back/dashboard.php');
-        } else {
-            header("location:/login");
+                $articleShow = new Articles();
+                $articles = $articleShow->getArticles();
+    
+                $commentShow = new Comments();
+                $modComments = $commentShow->getCommentsToModerate();
+                
+    
+                require_once('./view/back/dashboard.php');
+            } else {
+                  header("location:/login");
+            }
         }
+    } 
+
+    public function disconnect(){
+
     }
+
 
     public function allowComment()
     {
