@@ -62,7 +62,7 @@
     async function allowComment(commentId){
         let response = await axios.get("/comments/allow?id=" + commentId)
         if(response.status >= 200 && response.status < 400){
-            alert("Le commentaire a été autorisé")
+            //alert("Le commentaire a été autorisé")
             let allowedComment = document.getElementById('commentContent' + commentId)
             allowedComment.innerHTML = ""
         }
@@ -70,7 +70,7 @@
     async function deleteComment(commentId){
         let response = await axios.get("/comments/delete?id=" + commentId)
         if(response.status >= 200 && response.status < 400){
-            alert("Le commentaire a bien été supprimé")
+            //alert("Le commentaire a bien été supprimé")
             let deletedComment = document.getElementById('commentContent' + commentId)
             deletedComment.innerHTML = ""
         }
@@ -80,7 +80,7 @@
     {
         let response = await axios.get("/article/delete?id=" + articleId)
         if(response.status >= 200 && response.status < 400){
-            alert("article supprimé")
+            //alert("article supprimé")
             let deletedArticle = document.getElementById("chaptersdash"+articleId)
             deletedArticle.innerHTML=""
         }

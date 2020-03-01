@@ -27,10 +27,10 @@
             $commentId = $comment[0];
                 if($comment[4] == 0){
                 ?>
-                <div class="comment">
+                <div class="comment" id="comment-<?= $commentId ?>">
                     <h4>Commentaire de <?= $commentPseudo ?></h4>
-                    <p id="comment-content"><?= $commentContent ?></p>
-                    <button id="report-btn" class="btn-outline-danger" onclick="reportComment(<?= $commentId ?>)">signaler</button>
+                    <p class="comment-content"><?= $commentContent ?></p>
+                    <button class="btn-outline-danger report-btn" onclick="reportComment(<?= $commentId ?>)">signaler</button>
                 </div>
                 <?php
                 } elseif($comment[4] == 1){
@@ -50,11 +50,12 @@
     async function reportComment(commentId){
         let response = await axios.get("/comments/report?id=" + commentId)
         if(response.status >= 200 && response.status < 400){
-            alert("Commentaire signalé")
             let signaledComment = "Ce commentaire est désormais en attente de modération. Merci de votre retour."
-            document.getElementById('comment-content').innerText = signaledComment
-            document.getElementById('comment-content').style.color = 'red'
-            document.getElementById("report-btn").style.display = 'none'
+            let commentContent = document.querySelector(`#comment-${commentId} .comment-content`)
+            let reportButton = document.querySelector(`#comment-${commentId} .report-btn`)
+            commentContent.innerText = signaledComment
+            commentContent.style.color = 'red'
+            reportButton.style.display = 'none'
         }
     } 
 </script>

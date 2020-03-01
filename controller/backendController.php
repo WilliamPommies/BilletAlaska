@@ -19,7 +19,7 @@ class backendController
             $password = $_POST['password'];
             $getUsers = new Login();
             $identifiant = $getUsers->connect($username);
-            if (md5($password) == md5($identifiant[2])) {
+            if (md5($password) == $identifiant[2]) {
                 $_SESSION['statut'] = 'admin';
 
                 $articleShow = new Articles();
@@ -33,11 +33,25 @@ class backendController
             } else {
                   header("location:/login");
             }
+        } elseif(array_key_exists('status', $_SESSION) && $_SESSION['statut'] == 'admin') {
+            $articleShow = new Articles();
+            $articles = $articleShow->getArticles();
+
+            $commentShow = new Comments();
+            $modComments = $commentShow->getCommentsToModerate();
+            
+
+            require_once('./view/back/dashboard.php');
+        } else {
+            header('Location: /');
+            exit();
         }
     } 
 
     public function disconnect(){
-
+        session_destroy();
+        header('Location: /');
+        exit();
     }
 
 

@@ -17,13 +17,20 @@
 </head>
 <body>
     <nav class="navbar navbar-expand-lg navbar-dark bg-info"> 
-        <a href="/login" class="navbar-brand">Billets d'Alaska</a>
+        <a class="navbar-brand">Billets d'Alaska</a>
+        <?php if($_SESSION == true && $_SESSION['statut'] == 'admin'){ 
+            ?> <a href="/dashboard" class="navbar-brand">Dashboard</a>
+        <?php } ?>
         <a href="/" class="navbar-brand"> Home</a>
         <?php 
-            if($_SESSION["statut"] == "admin"){
+            if($_SESSION == true && $_SESSION["statut"] == "admin"){
                 ?>
-                    <a href="/disconnect" class="navbar-brand" onclick="disconnect()" >déconnecter</a>
+                    <a href="/disconnect" class="navbar-brand">déconnecter</a>
                 <?php
+            } else {
+                ?>
+                    <a href="/login" class="navbar-brand">se connecter</a>
+                <?php 
             }
         ?>
 
