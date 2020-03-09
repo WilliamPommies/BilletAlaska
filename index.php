@@ -1,4 +1,4 @@
 <?php 
+session_start();
 
-
-require_once('./controller/Router.php');
+require('./controller/Router.php');
