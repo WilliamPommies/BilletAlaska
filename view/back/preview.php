@@ -8,7 +8,7 @@ require_once('./view/templates/header.php') ?>
     <p><?= $_POST['content'];?> </p>
 </div>
 <div>
-    <a href="/dashboard"><button>retour à l'administration</button></a>
+    <a href="/dashboard"><button class="btn-success"> retour à l'administration</button></a>
 </div>
 
 

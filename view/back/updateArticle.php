@@ -14,7 +14,7 @@ $articleContent = $displayArticle[2];
             <?=$articleContent?>
         </textarea>
         <br>
-        <input type="submit" name="valider" value="Modifier">
+        <input class="btn-success" type="submit" name="valider" value="Modifier">
     </form>
 </div>
 

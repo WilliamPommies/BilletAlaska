@@ -69,44 +69,64 @@ class backendController
 
     public function createArticle()
     {
-        require_once('./view/back/newArticle.php');
+        if($_SESSION && $_SESSION['statut']== 'admin'){
+            require_once('./view/back/newArticle.php');
+        } else {
+            header('location:/');
+        }
+        
     }
 
     public function previewAndUpArticle()
     {
-        $articleShow = new Articles();
-        if(isset($_POST['form_checker']) && $_POST['form_checker'] == 'newArticleForm'){
-            $newArticle = $articleShow->saveNewArticle($_POST['title'], $_POST["content"]);
+        if($_SESSION && $_SESSION['statut']== 'admin'){
+            $articleShow = new Articles();
+            if(isset($_POST['form_checker']) && $_POST['form_checker'] == 'newArticleForm'){
+                $newArticle = $articleShow->saveNewArticle($_POST['title'], $_POST["content"]);
+            }
+            
+            require_once('./view/back/preview.php');
+        } else {
+            header('location:/');
         }
-        
-        require_once('./view/back/preview.php');
     }
 
     public function deleteArticle()
     {
-        $articleShow = new Articles();
-        $deleteArticle = $articleShow->deleteArticle($_GET['id']);
-        header('location: /');
+        if($_SESSION && $_SESSION['statut']== 'admin'){
+            $articleShow = new Articles();
+            $deleteArticle = $articleShow->deleteArticle($_GET['id']);
+            header('location: /');
+        } else {
+            header('location:/');
+        }
     }
 
     public function modifyArticle(){
-        $articleShow = new Articles();
-        $displayArticle = $articleShow->getArticle($_GET['id']);
+        if($_SESSION && $_SESSION['statut']== 'admin'){
+            $articleShow = new Articles();
+            $displayArticle = $articleShow->getArticle($_GET['id']);
 
-        require_once("./view/back/updateArticle.php");
+            require_once("./view/back/updateArticle.php");
+        } else {
+            header('location:/');
+        }
     }
 
     public function updateArticle()
     {
-        
-        if(isset($_POST['form_checker']) && $_POST['form_checker'] == 'updateForm'){
-            $articleShow = new Articles();
-            $articleId = $_GET['id'];
-            $title = $_POST['title'];
-            $article = $_POST["content"];
-            $articleShow->updateArticle($title, $article, $articleId);
-            header('location: /chapitre?id='. $_GET['id']);
+        if($_SESSION && $_SESSION['statut']== 'admin'){
+            if(isset($_POST['form_checker']) && $_POST['form_checker'] == 'updateForm'){
+                $articleShow = new Articles();
+                $articleId = $_GET['id'];
+                $title = $_POST['title'];
+                $article = $_POST["content"];
+                $articleShow->updateArticle($title, $article, $articleId);
+                header('location: /chapitre?id='. $_GET['id']);
+            }
             
+        } else {
+            header('location:/');
         }
     }
 }
