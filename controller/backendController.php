@@ -30,10 +30,10 @@ class backendController
                 
     
                 require_once('./view/back/dashboard.php');
-            } else {
+            } elseif (md5($password) != $identifiant[2]) {
                   header("location:/login");
             }
-        } elseif(array_key_exists('status', $_SESSION) && $_SESSION['statut'] == 'admin') {
+        } elseif($_SESSION && $_SESSION['statut'] == 'admin') {
             $articleShow = new Articles();
             $articles = $articleShow->getArticles();
 

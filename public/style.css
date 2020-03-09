@@ -1,3 +1,21 @@
+html{
+    width : 100%;
+    height: 100%;
+    margin: auto;
+}
+
+/* Header */
+#icon{
+    max-width: 50px;
+    max-height: 50px;
+}
+
+.menu:hover{
+    color: gold !important;
+}
+
+
+/* Frontpage */
 
 #lastArticle{
     margin: 2%;
@@ -21,10 +39,16 @@
     border : 1px lightgray solid;
 }
 
+/* Chapter Pages */
 #comment_section{
     width : auto;
     margin : 2% 25% 2% 25%;
 
+}
+
+#CommentText{
+    width: 100%;
+    border : 2px lightgrey solid;
 }
  .comment{
     padding: 10px;
@@ -33,6 +57,7 @@
     margin : 10px 0;
  }
 
+ /* Footer */
 footer{
     height: 100px;
 }
@@ -42,6 +67,7 @@ footer p {
     text-align: center;
 }
 
+/* Dashboard */
 #allChaptersDash{
     border : 1px grey solid;
     border-radius : 20px;
@@ -61,6 +87,8 @@ footer p {
     border : 1px lightgray solid;
 }
 
+
+/* Dasboard - Comment Section */
 #commentDiv{
     display : flex;
     flex-direction : space-between;
@@ -123,4 +151,12 @@ td, th{
 
 .articleForm #mytextarea{
     height : 100%;
+}
+
+@media only screen and (min-device-width : 320px) and (max-device-width : 1024px) 
+{
+
+ .chapters{
+     max-width: initial;
+ }
 }

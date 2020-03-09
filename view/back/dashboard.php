@@ -49,7 +49,7 @@
             <h2><?= $articleTitle ?></h2>
             <p><?= substr(strip_tags($articleContent),0,100)?> ... </p>
             <div class="btn-container">
-                <a href="<?= "/chapitre?id=" . $articleId ?>"><button class="btn btn-outline-primary">lire la suite</button></a>
+                <a href="<?= "/chapitre?id=" . $articleId ?>"><button class="btn btn-outline-primary">Lire</button></a>
                 <a href=<?= "/article/modify?id=" . $articleId ?>><button class="btn-outline-warning btn" id="update-btn">Modifier</button></a>
                 <a><button class="btn-outline-danger btn" id="delete-btn" onclick="deleteArticle(<?= $articleId ?>)">Supprimer</button></a>
             </div>

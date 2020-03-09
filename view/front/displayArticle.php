@@ -15,9 +15,9 @@
             <input type="hidden" name="form_checker" value="commentForm">
             <input type="text" name="username" value="" placeholder="Pseudo" rows="1" cols="60" required>
             <br>
-            <textarea name="comment" placeholder="Votre commentaire" rows="3" cols="66" required></textarea>
+            <textarea id="CommentText" name="comment" placeholder="Votre commentaire" rows="3" required></textarea>
             <br>
-            <input type="submit" name="valider" value="Ajouter le commentaire">
+            <input class="btn-primary" type="submit" name="valider" value="Ajouter le commentaire">
         </form>
         <?php
             while ($comment = $comments->fetch())
