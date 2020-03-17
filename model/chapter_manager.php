@@ -48,7 +48,7 @@ class Articles extends QueryManager
   public function deleteArticle($articleId)
   {
     $db = $this->getConnection();
-    $req = $db->prepare("DELETE FROM articles WHERE id =?");
+    $req = $db->prepare("DELETE FROM articles WHERE id=?");
     $req->execute(array($articleId));
   }
 }

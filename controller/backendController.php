@@ -95,7 +95,9 @@ class backendController
     {
         if($_SESSION && $_SESSION['statut']== 'admin'){
             $articleShow = new Articles();
+            $commentShow = new Comments();
             $deleteArticle = $articleShow->deleteArticle($_GET['id']);
+            $deleteComments = $commentShow->deleteComment($_GET['id']);
             header('location: /');
         } else {
             header('location:/');
