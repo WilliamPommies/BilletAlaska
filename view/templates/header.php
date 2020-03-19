@@ -14,14 +14,13 @@
         selector: '#mytextarea'
         });
     </script>
-
 </head>
 <body>
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
         <img class="navbar-brand" id="icon" src="./public/images/icon.png">
         <a href="/" class="navbar-brand menu"> Home</a>
         <?php if($_SESSION == true && $_SESSION["statut"] == "admin"){ 
-            ?> <a href="/dashboard" class="navbar-brand menu">Dashboard</a>
+            ?><a href="/dashboard" class="navbar-brand menu">Dashboard</a>
         <?php } ?>
         <?php 
             if($_SESSION == true && $_SESSION["statut"] == "admin"){

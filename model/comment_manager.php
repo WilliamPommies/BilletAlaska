@@ -15,7 +15,7 @@ class Comments extends QueryManager
     public function addComment($username, $comment, $id_article)
     {
       $db = $this->getConnection();
-      $req = $db->prepare("INSERT INTO commentaires (username, comment, id_article) VALUES(?,?,?)");
+      $req = $db->prepare("INSERT INTO commentaires (username, comment, id_article, reported) VALUES(?,?,?,0)");
       $req->execute(array($username, $comment, $id_article));
     }
 
@@ -29,6 +29,12 @@ class Comments extends QueryManager
       $db = $this->getConnection();
       $req = $db->prepare("DELETE FROM commentaires WHERE id = ?");
       $req->execute(array($commentId));
+    }
+
+    public function deleteArticleComment($articleId){
+      $db = $this->getConnection();
+      $req = $db->prepare("DELETE FROM commentaires where id_article=?");
+      $req->execute(array($articleId));
     }
 
     public function getCommentsToModerate(){
