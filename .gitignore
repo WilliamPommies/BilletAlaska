@@ -3,3 +3,5 @@
 config/
 .htaccess
 notes.txt
+.htpasswd
+serv.php

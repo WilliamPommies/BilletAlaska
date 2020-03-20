@@ -1,8 +1,8 @@
 <?php require_once("./view/templates/header.php") ?>
 
 <div id="error_container">
-    <h1>"Tu sembles perdu, voyageur !"</h1>
-    <a href="/"><button class="btn-primary">Retour à l'accueil</button></a>
+    <h3 id="error_msg">"Tu sembles perdu, voyageur !"</h3>
+    <a href="/" class="btn-primary btn" role="button">Retour à l'accueil</a>
 </div>
 
 

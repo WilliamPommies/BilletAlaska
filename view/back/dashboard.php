@@ -24,7 +24,7 @@
                         <td><?= $commentContent ?></td>
                         <td><button class="btn-outline-success btn" id="allow-btn" onclick="allowComment(<?= $commentId ?>)">Autoriser</button></td>
                         <td><button class="btn-outline-danger btn" id="delete-btn" onclick="deleteComment(<?= $commentId ?>)">Supprimer</button></td>
-                        <td><a href="<?= "/chapitre?id=" . $articleId ?>"><button class="btn-outline-primary btn">Voir l'article</button></a></td>
+                        <td><a href="<?= "/chapitre?id=" . $articleId ?>" class="btn-outline-primary btn" role=button>Lire</a></td>
                     </tr>
                 </tbody>
         <?php } ?>
@@ -35,7 +35,7 @@
 <section>
     <div class="title">
         <h1>Tous les articles</h1>
-        <a href="/create/new"><button class="btn-outline-secondary">Créer nouveau</button></a>
+        <a href="/create/new">Créer nouveau</a>
     </div>
     <div id="allChaptersDash">
     <?php 
@@ -45,13 +45,13 @@
         $articleTitle = $article[1];
         $articleContent = $article[2];
         ?>
-        <div id="chaptersdash<?=$articleId?>">
+        <div id="chaptersdash<?=$articleId?>" class="chapter_view">
             <h2><?= $articleTitle ?></h2>
             <p><?= substr(strip_tags($articleContent),0,100)?> ... </p>
             <div class="btn-container">
-                <a href="<?= "/chapitre?id=" . $articleId ?>"><button class="btn btn-outline-primary">Lire</button></a>
-                <a href=<?= "/article/modify?id=" . $articleId ?>><button class="btn-outline-warning btn" id="update-btn">Modifier</button></a>
-                <a><button class="btn-outline-danger btn" id="delete-btn" onclick="deleteArticle(<?= $articleId ?>)">Supprimer</button></a>
+                <a href="<?= "/chapitre?id=" . $articleId ?>" class="btn btn-outline-primary" role="button">Lire</a>
+                <a href=<?= "/article/modify?id=" . $articleId ?> class="btn-outline-warning btn" role="button">Modifier</a>
+                <button class="btn-outline-danger btn" id="delete-btn" onclick="deleteArticle(<?= $articleId ?>)">Supprimer</button>
             </div>
         </div>
     <?php } ?>
@@ -62,7 +62,6 @@
     async function allowComment(commentId){
         let response = await axios.get("/comments/allow?id=" + commentId)
         if(response.status >= 200 && response.status < 400){
-            //alert("Le commentaire a été autorisé")
             let allowedComment = document.getElementById('commentContent' + commentId)
             allowedComment.innerHTML = ""
         }
@@ -70,7 +69,6 @@
     async function deleteComment(commentId){
         let response = await axios.get("/comments/delete?id=" + commentId)
         if(response.status >= 200 && response.status < 400){
-            //alert("Le commentaire a bien été supprimé")
             let deletedComment = document.getElementById('commentContent' + commentId)
             deletedComment.innerHTML = ""
         }
@@ -80,7 +78,6 @@
     {
         let response = await axios.get("/article/delete?id=" + articleId)
         if(response.status >= 200 && response.status < 400){
-            //alert("article supprimé")
             let deletedArticle = document.getElementById("chaptersdash"+articleId)
             deletedArticle.innerHTML=""
         }

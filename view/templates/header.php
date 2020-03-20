@@ -6,7 +6,7 @@
     <title>Billets Simple Pour l'Alaska</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
     <link rel="icon" type="image/png" href="./public/images/icon.png">
-    <link rel="stylesheet" href="./public/style.css">
+    <link rel="stylesheet" href="/public/style.css">
     <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
     <script src="https://cdn.tiny.cloud/1/hffvymj4ee1g6b15g9osarycp749nlbkg7211z25d6yiuwjk/tinymce/5/tinymce.min.js" referrerpolicy="origin"></script>
     <script>
@@ -17,7 +17,7 @@
 </head>
 <body>
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-        <img class="navbar-brand" id="icon" src="./public/images/icon.png">
+        <img class="navbar-brand" id="icon" src="/public/images/icon.png" alt="logo avion en papier outline">
         <a href="/" class="navbar-brand menu"> Home</a>
         <?php if($_SESSION == true && $_SESSION["statut"] == "admin"){ 
             ?><a href="/dashboard" class="navbar-brand menu">Dashboard</a>

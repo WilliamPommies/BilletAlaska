@@ -4,7 +4,7 @@
      $articleTitle = $displayArticle[1];
      $articleContent = $displayArticle[2];
      ?>
-    <div>
+    <div id="chapter_display">
         <h3><?= $articleTitle;?></h3>
         <br/>
         <p><?= $articleContent;?> </p>

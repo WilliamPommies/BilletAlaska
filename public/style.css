@@ -40,6 +40,12 @@ html{
 }
 
 /* Chapter Pages */
+#chapter_display{
+    margin: 50px;
+    padding : 25px;
+    border-bottom: 1px grey dotted;
+}
+
 #comment_section{
     width : auto;
     margin : 2% 25% 2% 25%;
@@ -101,22 +107,28 @@ footer p {
     border : 1px grey solid;
     border-radius : 20px;
 }
+
 table{
     width: 90%;
     margin: auto;
     border-collapse: collapse; 
 }
+
 thead{
     border-collapse: collapse; 
-    border : thin solid;
 }
-tr{
-    border: solid thin; 
-    margin: 2px; 
+
+
+tbody tr{ 
+    border : thin dashed;
 }
-td, th{
-    padding: 5px 13px 5px 13px;
-    border: thin solid; 
+
+td{
+    padding: 20px;
+}
+
+th{
+    padding : 0px 20px;
 }
 
 .btn{
@@ -143,6 +155,12 @@ td, th{
     padding-right : 10px;
 }
 
+.chapter_view{
+    margin: 10px;
+    padding : 25px;
+    box-shadow: 0 3px 12px grey;
+}
+
 .articleForm{
     width : 90%;
     margin : auto; 
@@ -157,9 +175,14 @@ td, th{
 
 #error_container{
     max-width : 80%;
+    height : 500px;
     max-height : 80%;
     margin : 50px auto;
     text-align: center;
+}
+
+#error_msg{
+    margin: 60px;
 }
 
 @media only screen and (min-device-width : 320px) and (max-device-width : 1024px) 
