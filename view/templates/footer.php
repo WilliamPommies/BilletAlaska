@@ -1,14 +1,11 @@
     </div>
     <footer>
-        <p>Jean Forteroche, tout droits réservés.</p>
+        <p>Jean Forteroche, tous droits réservés.</p>
     </footer>
+    <script>
+        async function disconnect(articleId){
+            let response = await axios.get("/disconnect")
+        }
+    </script>
 </body>
-
-<script>
-        async function disconnect(articleId)
-    {
-        let response = await axios.get("/disconnect")
-    }
-</script>
-
 </html>
