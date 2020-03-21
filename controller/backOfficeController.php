@@ -3,7 +3,7 @@ require_once('./model/login_manager.php');
 require_once('./model/chapter_manager.php');
 require_once('./model/comment_manager.php');
 
-class backendController
+class backOfficeController
 {
     public function login(){
         $login = new Login();
