@@ -12,4 +12,10 @@ class Login extends QueryManager
     $identifiant = $req->fetch();
     return $identifiant;
   }
+
+  public function createUser($username, $password){
+    $db = $this->getConnection();
+    $req = $db->prepare("INSERT INTO users(username, password) VALUES(?,?)");
+    $req->execute(array($username, $password));
+  }
 }

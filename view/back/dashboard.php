@@ -36,6 +36,7 @@
     <div class="title">
         <h1>Tous les articles</h1>
         <a href="/create/new">Créer nouveau</a>
+        <a href="/create/user">Ajouter un utilisateur</a>
     </div>
     <div id="allChaptersDash">
     <?php 
