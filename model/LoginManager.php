@@ -1,8 +1,8 @@
 <?php
 
-require_once("model/query_manager.php");
+require_once("model/QueryManager.php");
 
-class Login extends QueryManager
+class LoginManager extends QueryManager
 {
   public function connect ($username)
   {

@@ -1,8 +1,8 @@
 <?php
 
-require_once("model/query_manager.php");
+require_once("model/QueryManager.php");
 
-class Comments extends QueryManager
+class CommentManager extends QueryManager
 {
     public function getComments($id)
     {

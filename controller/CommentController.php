@@ -1,26 +1,26 @@
 <?php
-require_once('./model/comment_manager.php');
+require_once('./model/CommentManager.php');
 
 Class CommentController{
 
     //approve reported comment
     public function allowComment()
     {
-        $commentShow = new Comments();
+        $commentShow = new CommentManager();
         $allowComment = $commentShow->allowComment($_GET['id']);
     }
 
     //delete reported comment
     public function deleteComment()
     {
-        $commentShow = new Comments();
+        $commentShow = new CommentManager();
         $deleteComment = $commentShow->deleteComment($_GET['id']);
     }
 
     //report a comment
       public function signalComment()
     {
-        $commentManager = new Comments();
+        $commentManager = new CommentManager();
         $commentManager->signalComment($_GET['id']);
     
     }  

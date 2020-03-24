@@ -1,12 +1,12 @@
 <?php
-require_once('./model/chapter_manager.php');
+require_once('./model/ChapterManager.php');
 
 Class ChapterController 
 {
     //Display Homepage
     public function home() {
 
-        $articleShow = new Articles();
+        $articleShow = new ChapterManager();
     
         $lastArticle = $articleShow->getLastArticle();
         $articles = $articleShow->getArticles();
@@ -19,13 +19,13 @@ Class ChapterController
 
       //Display each article and related comments
       public function getArticle(){
-          
+
         //fetch article
-        $articleShow = new Articles();
+        $articleShow = new ChapterManager();
         $displayArticle = $articleShow->getArticle($_GET['id']);
 
-        require_once('./model/comment_manager.php');
-        $commentManager = new Comments();
+        require_once('./model/CommentManager.php');
+        $commentManager = new CommentManager();
         
         //create comment linked on Article
         if(isset($_POST['form_checker']) && $_POST['form_checker'] == 'commentForm'){
@@ -54,7 +54,7 @@ Class ChapterController
       {
           // if user is an admin allow to preview and insert article into table
           if($_SESSION && $_SESSION['statut']== 'admin'){
-              $articleShow = new Articles();
+              $articleShow = new ChapterManager();
               if(isset($_POST['form_checker']) && $_POST['form_checker'] == 'newArticleForm'){
                   $newArticle = $articleShow->saveNewArticle($_POST['title'], $_POST["content"]);
               } 
@@ -69,7 +69,7 @@ Class ChapterController
       {
           //If user is an admin, allow to delete article from table
           if($_SESSION && $_SESSION['statut']== 'admin'){
-              $articleShow = new Articles();
+              $articleShow = new ChapterManager();
               $deleteArticle = $articleShow->deleteArticle($_GET['id']);
               
           } else {
@@ -81,7 +81,7 @@ Class ChapterController
       public function modifyArticle(){
           //if user is an admin, allow to reach the article update page
           if($_SESSION && $_SESSION['statut']== 'admin'){
-              $articleShow = new Articles();
+              $articleShow = new ChapterManager();
               $displayArticle = $articleShow->getArticle($_GET['id']);
   
               require_once("./view/back/updateArticle.php");
@@ -96,7 +96,7 @@ Class ChapterController
           //if user is an admin allow to update an article
           if($_SESSION && $_SESSION['statut']== 'admin'){
               if(isset($_POST['form_checker']) && $_POST['form_checker'] == 'updateForm'){
-                  $articleShow = new Articles();
+                  $articleShow = new ChapterManager();
                   $articleId = $_GET['id'];
                   $title = $_POST['title'];
                   $article = $_POST["content"];

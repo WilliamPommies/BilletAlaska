@@ -1,11 +1,11 @@
 <?php
-require_once('./model/login_manager.php');
+require_once('./model/LoginManager.php');
 
 Class UserController{
     
     //Display login page
     public function login(){
-        $login = new Login();
+        $login = new LoginManager();
 
         require_once('./view/back/adminlogin.php');
 
@@ -13,23 +13,23 @@ Class UserController{
 
     public function dashboard()
     { 
-        require_once('./model/chapter_manager.php');
-        require_once('./model/comment_manager.php');
+        require_once('./model/ChapterManager.php');
+        require_once('./model/CommentManager.php');
 
         //verify login information
         if(isset($_POST['login_checker']) && $_POST['login_checker'] == 'loginForm'){
             $username = $_POST['username'];
             $password = $_POST['password'];
-            $getUsers = new Login();
+            $getUsers = new LoginManager();
             $identifiant = $getUsers->connect($username);
             //if password match gives user an admin statut and show dashboard
             if (md5($password) == $identifiant[2]) {
                 $_SESSION['statut'] = 'admin';
 
-                $articleShow = new Articles();
+                $articleShow = new ChapterManager();
                 $articles = $articleShow->getArticles();
     
-                $commentShow = new Comments();
+                $commentShow = new CommentManager();
                 $modComments = $commentShow->getCommentsToModerate();
                 
     
@@ -42,10 +42,10 @@ Class UserController{
         } 
         // if user already an admin, show the dashboard
         elseif($_SESSION && $_SESSION['statut'] == 'admin') {
-            $articleShow = new Articles();
+            $articleShow = new ChapterManager();
             $articles = $articleShow->getArticles();
 
-            $commentShow = new Comments();
+            $commentShow = new CommentManager();
             $modComments = $commentShow->getCommentsToModerate();
         
             require_once('./view/back/dashboard.php');
@@ -72,7 +72,7 @@ Class UserController{
     public function createUser(){
         // if user and form complete insert new user into table
         if($_SESSION && $_SESSION['statut']== 'admin'){
-            $userShow = new Login();
+            $userShow = new LoginManager();
             if(isset($_POST['form_checker']) && $_POST['form_checker'] == 'newUserForm'){
                 $username = $_POST['username'];
                 //insert a md5 hashed password

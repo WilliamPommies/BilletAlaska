@@ -1,8 +1,8 @@
 <?php
 
-require_once("model/query_manager.php");
+require_once("model/QueryManager.php");
 
-class Articles extends QueryManager
+class ChapterManager extends QueryManager
 {
   public function getArticles()
   {
