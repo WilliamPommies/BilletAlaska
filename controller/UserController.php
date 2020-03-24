@@ -70,10 +70,12 @@ Class UserController{
     }
 
     public function createUser(){
+        // if user and form complete insert new user into table
         if($_SESSION && $_SESSION['statut']== 'admin'){
             $userShow = new Login();
             if(isset($_POST['form_checker']) && $_POST['form_checker'] == 'newUserForm'){
                 $username = $_POST['username'];
+                //insert a md5 hashed password
                 $password = md5($_POST['password']);
                 $newUser = $userShow->createUser($username, $password);
             } 
