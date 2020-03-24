@@ -1,10 +1,12 @@
 <?php require_once('./view/templates/header.php'); 
 
+//fetch all information of article
 $articleId = $displayArticle[0];
 $articleTitle = $displayArticle[1];
 $articleContent = $displayArticle[2];
 ?>
 
+<!-- update article form-->
 <div class="articleForm">
     <form name="newArticleform" action=<?= "/article/update?id=". $articleId ?> method="post"> 
         <input type="hidden" name="form_checker" value="updateForm">

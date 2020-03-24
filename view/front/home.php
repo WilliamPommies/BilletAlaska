@@ -1,6 +1,7 @@
 
 <?php require_once('./view/templates/header.php'); ?>
 
+<!-- display last article -->
 <div id='lastArticle'>
     <h1>Dernier Chapitre</h1>
     <h3><?= $lastArticle['title']; ?></h3>
@@ -8,10 +9,12 @@
     <a href="<?= "/chapitre?id=" . $lastArticleId ?>" class="btn btn-primary" role="button">Lire plus</a>
 </div>
 <br>
+<!-- display all articles -->
 <div id='allArticles'>
     <h1>Tous les Chapitres</h1>
     <div id="flex-container">
     <?php
+    //fetch all existing articles using a loop
     while ($article = $articles->fetch())
     {
      $articleId = $article[0];

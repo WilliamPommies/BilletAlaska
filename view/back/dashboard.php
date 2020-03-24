@@ -1,5 +1,6 @@
 <?php require_once('./view/templates/header.php'); ?>
 
+<!-- Comments to moderate section-->
 <section>
     <div class="title">
         <h1>Modération</h1>
@@ -12,6 +13,7 @@
                         <th>Commentaire</th>
                     </tr>
                 </thead>
+                <!-- fetch all comments to moderate - loop -->
         <?php while($modComment = $modComments->fetch()){
             $commentId = $modComment[0];
             $commentAuthor = htmlspecialchars($modComment[1]);
@@ -32,6 +34,7 @@
     </div>
 </section>
 
+<!-- Display all chapters order by most recent to oldest -->
 <section>
     <div class="title">
         <h1>Tous les articles</h1>
@@ -39,6 +42,7 @@
         <a href="/create/user">Ajouter un utilisateur</a>
     </div>
     <div id="allChaptersDash">
+    <!-- loop to fetch all articles -->
     <?php 
     while ($article = $articles->fetch())
     {

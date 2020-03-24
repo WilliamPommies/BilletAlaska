@@ -1,5 +1,6 @@
 <?php require("./view/templates/header.php"); ?>
 
+<!-- new user page -->
 <div id="new_container">
     <form name="newArticleform" action="/create/user/insert" method="post"> 
         <input type="hidden" name="form_checker" value="newUserForm">

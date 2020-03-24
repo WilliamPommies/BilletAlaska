@@ -1,7 +1,7 @@
 <?php 
 require_once './view/templates/header.php'; 
 ?>
-
+<!--authentification page-->
 <div>
     <h1>Connectez-vous</h1>
     <form name="login-form" method="post" action="/dashboard">

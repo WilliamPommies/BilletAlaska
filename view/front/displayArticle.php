@@ -11,6 +11,7 @@
         <p><?= $articleContent;?> </p>
     </div>
     
+    <!--comment form -->
     <div id="comment_section">
         <form name="comment-form" action="/chapitre?id=<?= $articleId ?>" method="post"> 
             <input type="hidden" name="form_checker" value="commentForm">
@@ -21,6 +22,7 @@
             <input class="btn-primary" type="submit" name="valider" value="Ajouter le commentaire">
         </form>
         <?php
+            //fetch existing comments
             while ($comment = $comments->fetch())
             {
             $commentPseudo = htmlspecialchars($comment[1]);
@@ -34,6 +36,7 @@
                     <button class="btn-outline-danger report-btn" onclick="reportComment(<?= $commentId ?>)">signaler</button>
                 </div>
                 <?php
+                // if comment is reported display a special message
                 } elseif($comment[4] == 1){
                 ?>
                 <div class="comment">

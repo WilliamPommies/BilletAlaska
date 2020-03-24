@@ -1,5 +1,6 @@
 <?php require("./view/templates/header.php"); ?>
 
+<!-- new Article page -->
 <div id="new_container">
     <form name="newArticleform" action="/save/newArticle" method="post"> 
         <input type="hidden" name="form_checker" value="newArticleForm">
