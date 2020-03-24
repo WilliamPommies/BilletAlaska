@@ -3,11 +3,11 @@
 <div id="new_container">
     <form name="newArticleform" action="/create/user/insert" method="post"> 
         <input type="hidden" name="form_checker" value="newUserForm">
-        <input type="text" name="username" value="" placeholder="username" required>
+        <input id="userLog" type="text" name="username" value="" placeholder="username" required>
         <br>
-        <input type="password" name="password" value="" placeholder="password" required>
+        <input id="userPass" type="password" name="password" value="" placeholder="password" required>
         <br>
-        <input type="submit" name="valider" value="Créer">
+        <input class="btn-success" type="submit" name="valider" value="Créer">
     </form>
 </div>
 

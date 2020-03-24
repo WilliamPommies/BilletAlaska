@@ -13,7 +13,7 @@
     <div id="comment_section">
         <form name="comment-form" action="/chapitre?id=<?= $articleId ?>" method="post"> 
             <input type="hidden" name="form_checker" value="commentForm">
-            <input type="text" name="username" value="" placeholder="Pseudo" rows="1" cols="60" required>
+            <input id="commentUser"type="text" name="username" value="" placeholder="Pseudo" rows="1" cols="60" required>
             <br>
             <textarea id="CommentText" name="comment" placeholder="Votre commentaire" rows="3" required></textarea>
             <br>

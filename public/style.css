@@ -40,6 +40,14 @@ html{
 }
 
 /* Chapter Pages */
+#commentUser{
+    margin-bottom: 10px;
+}
+
+#CommentText{
+    margin-bottom: 10px;
+}
+
 #chapter_display{
     margin: 50px;
     padding : 25px;
@@ -93,6 +101,14 @@ footer p {
     border : 1px lightgray solid;
 }
 
+/* login - new user pages */
+#userLog{
+    margin-bottom: 10px;
+}
+
+#userPass{
+    margin-bottom: 10px;
+}
 
 /* Dasboard - Comment Section */
 
