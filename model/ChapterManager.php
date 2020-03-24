@@ -34,8 +34,8 @@ class ChapterManager extends QueryManager
   public function saveNewArticle($title,$article)
   {
     $db = $this->getConnection();
-    $req = $db->prepare("INSERT INTO articles(title,content) VALUES(?,?)");
-    $req->execute(array($title,$article));
+    $req = $db->prepare("INSERT INTO articles(title,content,author_id) VALUES(?,?,?)");
+    $req->execute(array($title,$article, $_SESSION['user_id']));
   }
 
   public function updateArticle($title, $article, $articleId)

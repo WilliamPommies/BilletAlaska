@@ -13,6 +13,14 @@ class LoginManager extends QueryManager
     return $identifiant;
   }
 
+  public function getUsername($userId){
+    $db = $this->getConnection();
+    $req = $db->prepare("SELECT username FROM users WHERE id =?");
+    $req->execute(array($userId));
+    $username = $req->fetch();
+    return $username;
+  }
+
   public function createUser($username, $password){
     $db = $this->getConnection();
     $req = $db->prepare("INSERT INTO users(username, password) VALUES(?,?)");

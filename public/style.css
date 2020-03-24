@@ -40,6 +40,10 @@ html{
 }
 
 /* Chapter Pages */
+#author{
+    font-size: 0.9em;
+}
+
 #commentUser{
     margin-bottom: 10px;
 }

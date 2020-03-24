@@ -6,6 +6,7 @@
      ?>
     <div id="chapter_display">
         <h3><?= $articleTitle;?></h3>
+        <h4 id="author"><em>Ecrit par <?= $authorUsername[0] ?></em></h4>
         <br/>
         <p><?= $articleContent;?> </p>
     </div>

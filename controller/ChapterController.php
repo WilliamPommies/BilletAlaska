@@ -26,14 +26,19 @@ Class ChapterController
 
         require_once('./model/CommentManager.php');
         $commentManager = new CommentManager();
+       
         
-        //create comment linked on Article
+        //create comment linked to Article
         if(isset($_POST['form_checker']) && $_POST['form_checker'] == 'commentForm'){
         $commentManager->addComment($_POST['username'], $_POST["comment"], $_GET['id']);
         header("location: /chapitre?id=" . $_GET['id']);
         }
         //fetch related comments
         $comments = $commentManager->getComments($_GET['id']);
+
+        require_once('./model/LoginManager.php');
+        $userShow = new LoginManager();
+        $authorUsername = $userShow->getUsername($displayArticle[3]);
 
         require_once('./view/front/displayArticle.php');
       }

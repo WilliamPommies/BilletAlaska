@@ -25,6 +25,7 @@ Class UserController{
             //if password match gives user an admin statut and show dashboard
             if (md5($password) == $identifiant[2]) {
                 $_SESSION['statut'] = 'admin';
+                $_SESSION['user_id'] = $identifiant[0];
 
                 $articleShow = new ChapterManager();
                 $articles = $articleShow->getArticles();
